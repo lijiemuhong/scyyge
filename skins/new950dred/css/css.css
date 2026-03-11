@@ -30,13 +30,13 @@ textarea { font-size: 12px }
 div, p, ul { margin: 0px; padding: 0px; list-style: none; }
 #top { background: url(../y/top_bg.gif) 0 -37px repeat-x; height: 40px; margin: 0px 0px 0px 0px; margin-left: auto; margin-right: auto; width: 985px; padding: 0px; clear: both }
 #top ul { list-style: none; }
-#top ul li { float: left; padding: 0px; margin: 0px; position: relative; z-index: 5; width: 88px; }
-#top ul li a { color: #FFF; font-size: 14px; font-weight: bold; display: block; height: 40px; line-height: 40px; width: 88px; text-align: center; background: url(../y/top_li.gif) no-repeat right top; }
-#top ul li a:hover, #top ul li#active a { color: #FF0; background: url(../y/top_li_hover.gif); }
-#top ul li ul { background: #C82F21; border-color: #de813b; border-style: none solid solid; border-width: 1px; display: none; width: 84px; margin: 0px; position: absolute; }
-#top ul li ul li { width: 84px; background: none; margin: 0px; padding: 0px; float: none; font-size: 12px; height: 30px; overflow: hidden; }
-#top ul li ul li a { background: none !important; margin: 0px; padding: 0px; font-size: 12px; display: block; border: none; line-height: 30px; height: 30px; width: 84px; color: #fff !important; }
-#top ul li ul li a:hover, #top ul li ul li.select a { margin: 0px; padding: 0px; font-size: 12px; display: block; background: #FDF90A !important; border: none; height: 30px; line-height: 30px; width: 84px; color: #C42E21 !important; }
+#top ul li { float: left; padding: 0px; margin: 0px; position: relative; z-index: 5; width: 110px; }
+#top ul li a { color: #FFF; font-size: 13px; font-weight: bold; display: block; height: 40px; line-height: 40px; width: 110px; text-align: center; background: url(../y/top_li.gif) no-repeat right top; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#top ul li a:hover, #top ul li#active a { color: #FF0; background: url(../y/top_li_hover.gif) no-repeat right top; }
+#top ul li ul { background: #C82F21; border-color: #de813b; border-style: none solid solid; border-width: 1px; display: none; width: 110px; margin: 0px; position: absolute; left: 0; }
+#top ul li ul li { width: 110px; background: none; margin: 0px; padding: 0px; float: none; font-size: 12px; height: 30px; overflow: hidden; }
+#top ul li ul li a { background: none !important; margin: 0px; padding: 0px 8px; font-size: 12px; display: block; border: none; line-height: 30px; height: 30px; width: 94px; text-align: left; color: #fff !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#top ul li ul li a:hover, #top ul li ul li.select a { margin: 0px; padding: 0px 8px; font-size: 12px; display: block; background: #FDF90A !important; border: none; height: 30px; line-height: 30px; width: 94px; text-align: left; color: #C42E21 !important; }
 #top ul .li2 { float: left; padding: 0px; margin: 0px; }
 #top ul .li2 a { background: none; display: block; height: 40px; width: 88px; }
 #top ul .li2 a:hover { background: background:url(../y/top_li_hover2.gif);
