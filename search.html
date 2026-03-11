@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Search Results - Sichuan Yiyuan General Equipment Co., Ltd.</title>
+<link href="skins/new950dred/css/css.css" rel="stylesheet" type="text/css" />
+<script src="search_index.js"></script>
+<style type="text/css">
+  /* Search page-only layout tweaks (avoid touching global css.css) */
+  #searchPage {
+    width: 985px;
+    margin: 0 auto;
+    clear: both;
+  }
+
+  #searchResultsWrap {
+    width: 720px;
+    margin: 18px auto 28px;
+    background: #fff;
+    border: 1px solid #DDD;
+    padding: 18px 22px;
+    line-height: 1.7;
+    overflow: hidden;
+  }
+
+  #searchResults .search-summary {
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  #searchResults .search-item {
+    padding: 10px 0;
+    border-bottom: 1px dotted #CCC;
+  }
+
+  #searchResults .search-item:last-child {
+    border-bottom: 0;
+  }
+
+  #searchResults .search-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 2px;
+  }
+
+  #searchResults .search-title a {
+    color: #1a0dab;
+    text-decoration: underline;
+  }
+
+  #searchResults .search-url {
+    color: #006621;
+    font-size: 12px;
+    margin: 0 0 4px;
+  }
+
+  #searchResults .search-snippet {
+    color: #444;
+    font-size: 12px;
+    margin: 0;
+  }
+</style>
+<script>
+function doSearch() {
+    var input = document.getElementById('searchInput');
+    var queryRaw = input ? input.value : '';
+    var query = (queryRaw == null ? '' : String(queryRaw));
+    query = query.replace(/^\s+|\s+$/g, '');
+    if (query.toLowerCase() === 'search...') query = '';
+    if (!query) {
+        var emptyDiv = document.getElementById('searchResults');
+        if (emptyDiv) {
+            emptyDiv.innerHTML = '<div class="search-summary">Please enter a search term.</div>';
+        }
+        return false;
+    }
+
+    var qLower = query.toLowerCase();
+    var results = [];
+    for (var i = 0; i < searchIndex.length; i++) {
+        var page = searchIndex[i];
+        var hay = ((page.title || '') + ' ' + (page.keywords || '')).toLowerCase();
+        if (hay.indexOf(qLower) >= 0) {
+            results.push(page);
+        }
+    }
+    
+    var resultsDiv = document.getElementById('searchResults');
+    if (!resultsDiv) return false;
+    if (results.length === 0) {
+        resultsDiv.innerHTML =
+          '<div class="search-summary">No results found for "' + escapeHtml(query) + '". Please try different keywords.</div>' +
+          '<p><a href="products.html">Browse Products</a> | <a href="index.html">Go Home</a></p>';
+    } else {
+        var html = '<div class="search-summary">Found ' + results.length + ' result(s) for "' + escapeHtml(query) + '":</div>';
+        for (var i = 0; i < results.length; i++) {
+            var url = results[i].url || '#';
+            var title = results[i].title || url;
+            var kw = results[i].keywords || '';
+            var snippet = kw;
+            if (snippet.length > 180) snippet = snippet.substring(0, 180) + '...';
+
+            html +=
+              '<div class="search-item">' +
+                '<div class="search-title"><a href="' + url + '">' + escapeHtml(title) + '</a></div>' +
+                '<div class="search-url">' + escapeHtml(url) + '</div>' +
+                '<p class="search-snippet">' + escapeHtml(snippet) + '</p>' +
+              '</div>';
+        }
+        resultsDiv.innerHTML = html;
+    }
+    return false;
+}
+
+function getQueryParam(name) {
+    var search = (window.location && window.location.search) ? window.location.search : '';
+    if (!search || search.length < 2) return null;
+    var pairs = search.substring(1).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var p = pairs[i].split('=');
+        var key = decodeURIComponent((p[0] || '').replace(/\+/g, ' '));
+        if (key === name) return decodeURIComponent(((p[1] || '')).replace(/\+/g, ' '));
+    }
+    return null;
+}
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Auto-search on page load if query parameter exists
+function autoSearch() {
+    var q = getQueryParam('q');
+    if (q) {
+        var input = document.getElementById('searchInput');
+        if (input) input.value = q;
+        doSearch();
+    }
+}
+</script>
+</head>
+<body onload="autoSearch()">
+<div id="go_home">
+  <a href="index.html">
+    <h1>Sichuan Yiyuan General Equipment Co., Ltd.</h1>
+  </a>
+  <a href="http://www.scyyge.com/">Technical Support</a> | <a href="contact.html">Contact Us</a>
+  <div class="s">
+    <form action="search.html" method="get" onsubmit="return doSearch();">
+      <input id="searchInput" type="text" name="q" value="Search..." onfocus="if(this.value=='Search...') this.value='';" onblur="if(this.value=='') this.value='Search...';" style="width:120px;padding:2px;">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<div id="searchPage">
+  <div id="searchResultsWrap">
+    <div id="searchResults"></div>
+  </div>
+</div>
+<div id="bottom">
+  <div id="copyright">Copyright &copy; 2013-2014 Sichuan Yiyuan General Equipment Co., Ltd. All Rights Reserved.</div>
+</div>
+</body>
+</html>
